@@ -25,7 +25,11 @@ stockly-platform/
 
 ## Tài liệu
 
-- [Product Brief](docs/01-product-brief.md) (đang viết)
+- [Product Brief](docs/01-product-brief.md)
+- [User Stories](docs/02-user-stories.md)
+- [ERD](docs/03-erd.md)
+- [Quy ước làm việc](docs/04-conventions.md)
+- [Wireframes](docs/05-wireframes.md)
 - Các quyết định kiến trúc (ADR): thư mục `docs/adr/`
 
 ## Lộ trình
