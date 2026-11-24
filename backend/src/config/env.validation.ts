@@ -3,6 +3,9 @@ export function validateEnv(config: Record<string, unknown>) {
   if (!Number.isInteger(port) || port <= 0) {
     throw new Error('PORT must be a positive integer');
   }
+  if (!config.DATABASE_URL) {
+    throw new Error('DATABASE_URL is required');
+  }
   return {
     ...config,
     PORT: port,

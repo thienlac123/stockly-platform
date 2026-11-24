@@ -9,6 +9,8 @@ jobs:
   backend:
     name: backend
     runs-on: ubuntu-latest
+    env:
+      DATABASE_URL: postgresql://stockly:stockly_dev@localhost:5432/stockly?schema=public
     defaults:
       run:
         working-directory: backend
@@ -20,6 +22,7 @@ jobs:
           cache: npm
           cache-dependency-path: backend/package-lock.json
       - run: npm ci
+      - run: npx prisma generate
       - run: npm run lint
       - name: Run tests
         env:
