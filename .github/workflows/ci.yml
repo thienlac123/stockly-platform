@@ -21,5 +21,8 @@ jobs:
           cache-dependency-path: backend/package-lock.json
       - run: npm ci
       - run: npm run lint
-      - run: npm test
+      - name: Run tests
+        env:
+          NODE_OPTIONS: --experimental-vm-modules
+        run: npm test
       - run: npm run build
