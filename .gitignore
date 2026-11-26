@@ -23,3 +23,5 @@ Thumbs.db
 !.vscode/extensions.json
 .idea
 *.tsbuildinfo
+# Công cụ AI cục bộ
+.claude
