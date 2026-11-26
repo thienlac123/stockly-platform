@@ -2,7 +2,7 @@
 
 Stockly là nền tảng SaaS quản lý tồn kho và vận hành kho dành cho doanh nghiệp vừa và nhỏ, hỗ trợ nhiều doanh nghiệp dùng chung hệ thống (multi-tenant). Đây là dự án portfolio fullstack, được xây dựng để thực hành thiết kế backend theo hướng thực tế: đa tenant, phân quyền theo vai trò (RBAC) và quản lý tồn kho bằng giao dịch.
 
-> **Trạng thái:** Phase 00 – Khảo sát và chuẩn bị nền tảng. Hiện chỉ có tài liệu, chưa có code ứng dụng.
+> **Trạng thái:** Phase 01 – Dựng khung dự án. Đã có backend, database và frontend chạy được; chưa có tính năng nghiệp vụ.
 
 ## Công nghệ dự kiến
 
@@ -22,6 +22,28 @@ stockly-platform/
 ├── docs/             # Product brief, ERD, các quyết định kiến trúc
 └── docker-compose.yml
 ```
+## Chạy dự án trên máy
+
+Yêu cầu: Node.js 22 trở lên, Docker Desktop.
+
+1. Chạy database:
+
+       docker compose up -d
+
+2. Chạy backend (http://localhost:3000/api, tài liệu API tại /docs):
+
+       cd backend
+       copy .env.example .env
+       npm install
+       npx prisma migrate dev
+       npm run start:dev
+
+3. Chạy frontend ở terminal khác (http://localhost:5173):
+
+       cd frontend
+       copy .env.example .env
+       npm install
+       npm run dev
 
 ## Tài liệu
 
