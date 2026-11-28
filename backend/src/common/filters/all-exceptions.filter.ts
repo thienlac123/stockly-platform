@@ -18,7 +18,9 @@ export class AllExceptionsFilter implements ExceptionFilter {
     const req = ctx.getRequest<Request>();
 
     const isHttp = exception instanceof HttpException;
-    const status = isHttp ? exception.getStatus() : HttpStatus.INTERNAL_SERVER_ERROR;
+    const status = isHttp
+      ? exception.getStatus()
+      : HttpStatus.INTERNAL_SERVER_ERROR;
 
     let message: string | string[] = 'Internal server error';
     if (isHttp) {
@@ -26,9 +28,12 @@ export class AllExceptionsFilter implements ExceptionFilter {
       message =
         typeof body === 'string'
           ? body
-          : ((body as { message?: string | string[] }).message ?? exception.message);
+          : ((body as { message?: string | string[] }).message ??
+            exception.message);
     } else {
-      this.logger.error(exception instanceof Error ? exception.stack : String(exception));
+      this.logger.error(
+        exception instanceof Error ? exception.stack : String(exception),
+      );
     }
 
     res.status(status).json({
