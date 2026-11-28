@@ -12,7 +12,11 @@ async function bootstrap() {
   app.setGlobalPrefix('api');
   app.enableCors({ origin: config.get<string>('CORS_ORIGIN') });
   app.useGlobalPipes(
-    new ValidationPipe({ whitelist: true, forbidNonWhitelisted: true, transform: true }),
+    new ValidationPipe({
+      whitelist: true,
+      forbidNonWhitelisted: true,
+      transform: true,
+    }),
   );
   app.useGlobalFilters(new AllExceptionsFilter());
 
@@ -20,7 +24,11 @@ async function bootstrap() {
     .setTitle('Stockly API')
     .setVersion('0.1')
     .build();
-  SwaggerModule.setup('docs', app, SwaggerModule.createDocument(app, swaggerConfig));
+  SwaggerModule.setup(
+    'docs',
+    app,
+    SwaggerModule.createDocument(app, swaggerConfig),
+  );
 
   await app.listen(config.get<number>('PORT', 3000));
 }
